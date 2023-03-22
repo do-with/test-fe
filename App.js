@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 import {NavigationContainer} from "@react-navigation/native";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import KakaoAuthHandle from "./components/KakaoAuthHandle";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={HomeScreen}/>
             <Stack.Screen name="Login" component={LoginScreen}/>
+            <Stack.Screen name="KakaoAuthHandle" component={KakaoAuthHandle} />
         </Stack.Navigator>
       </NavigationContainer>
   )
