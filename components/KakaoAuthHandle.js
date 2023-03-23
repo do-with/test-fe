@@ -1,17 +1,17 @@
-import {StyleSheet, View} from 'react-native';
 import {useEffect} from "react";
-import {useNavigation} from "@react-navigation/native";
+import {Linking, StyleSheet, View} from 'react-native';
+import {KAKAO_AUTH_URL} from "../share/kakaoAuth";
 
-const KakaoAuthHandle = () => {
-    const navigation = useNavigation();
-
+function KakaoAuthHandle({navigation}) {
     useEffect(() => {
         async function handleKakaoAuth() {
-            const url = new URL(window.location.href);
+            const url = new URL(KAKAO_AUTH_URL);
             const code = url.searchParams.get('code');
+            console.log("url: ",url);
+            console.log("code: ",code);
 
             const response = await fetch(
-                `http://localhost:8080/user/kakao/callback?code=${code}`,
+                `http://localhost:8080/user/kakao?code=${code}`,
                 {
                     method: 'GET',
                 },
@@ -19,7 +19,8 @@ const KakaoAuthHandle = () => {
             const data = await response.json();
             const token = data.headers.authorization;
             localStorage.setItem('token', token);
-            navigation.navigate('Home');
+            // navigation.navigate('Home');
+            navigation.navigate('CallbackKakao');
         }
         handleKakaoAuth().then();
     }, []);
@@ -40,6 +41,53 @@ const styles = StyleSheet.create({
 });
 
 export default KakaoAuthHandle;
+
+
+
+
+
+// import {StyleSheet, View} from 'react-native';
+// import {useEffect} from "react";
+// import {useNavigation} from "@react-navigation/native";
+
+// const KakaoAuthHandle = () => {
+//     const navigation = useNavigation();
+//
+//     useEffect(() => {
+//         async function handleKakaoAuth() {
+//             const url = new URL(window.location.href);
+//             const code = url.searchParams.get('code');
+//
+//             const response = await fetch(
+//                 `http://localhost:8080/user/kakao/callback?code=${code}`,
+//                 {
+//                     method: 'GET',
+//                 },
+//             );
+//             const data = await response.json();
+//             const token = data.headers.authorization;
+//             localStorage.setItem('token', token);
+//             navigation.navigate('Home');
+//         }
+//         handleKakaoAuth().then();
+//     }, []);
+//
+//     return (
+//         <View style={styles.container}></View>
+//     );
+// };
+//
+// const styles = StyleSheet.create({
+//     container: {
+//         width: '100%',
+//         height: '100%',
+//         display: 'flex',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//     },
+// });
+//
+// export default KakaoAuthHandle;
 
 // import axios from 'axios';
 // import { useEffect } from 'react';

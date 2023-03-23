@@ -5,7 +5,7 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import KakaoAuthHandle from "./components/KakaoAuthHandle";
-
+import CallbackKakao from "./components/CallbackKakao";
 const Stack = createNativeStackNavigator();
 export default function App() {
 
@@ -15,6 +15,7 @@ export default function App() {
             <Stack.Screen name="Home" component={HomeScreen}/>
             <Stack.Screen name="Login" component={LoginScreen}/>
             <Stack.Screen name="KakaoAuthHandle" component={KakaoAuthHandle} />
+            <Stack.Screen name="CallbackKakao" component={CallbackKakao} />
         </Stack.Navigator>
       </NavigationContainer>
   )
