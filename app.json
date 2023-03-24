@@ -11,6 +11,15 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+//    "plugins": [
+//      [
+//        "@react-native-seoul/kakao-login",
+//        {
+//          "kakaoAppKey": "x5mzyPxk9u0sDXusNgvPFOUALjM=",
+//          "kotlinVersion": "1.5.10"
+//        }
+//      ],
+//    ],
     "assetBundlePatterns": [
       "**/*"
     ],
